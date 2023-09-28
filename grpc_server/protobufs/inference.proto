@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message InferenceRequest {
+    int32 request_id = 1;
+    repeated string texts = 2;
+}
+
+message Embedding {
+    repeated float values = 1;
+}
+
+message InferenceResponse {
+    repeated Embedding embeddings = 1;
+}
+
+service InferenceServer {
+    rpc inference (InferenceRequest) returns (InferenceResponse);
+}
